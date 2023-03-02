@@ -38,20 +38,22 @@ class ChangMatController extends Controller
     {
         if ($request->isMethod('post')){
             $request->validate([
-                'CodeEquip' => 'required',
-                'TypeEquip' => 'required',
-                'MarEquip' => 'required',
-                'SerieEquip' => 'required',
-                'InfoEquip' => 'required'
+                'Code' => 'required',
+                'Date' => 'required',
+                'TypeMach' => 'required',
+                'SrvEmet' => 'required',
+                'SrvRec' => 'required',
+                'Commentaire' => 'required'
             ]);
         }
 
         $request->validate([
-            'CodeEquip' => 'required',
-            'TypeEquip' => 'required',
-            'MarEquip' => 'required',
-            'SerieEquip' => 'required',
-            'InfoEquip' => 'required'
+            'Code' => 'required',
+            'Date' => 'required',
+            'TypeMach' => 'required',
+            'SrvEmet' => 'required',
+            'SrvRec' => 'required',
+            'Commentaire' => 'required'
         ]);
 
             ChangMat::create($request->post());
@@ -90,11 +92,12 @@ class ChangMatController extends Controller
     public function update(Request $request, ChangMat $changmat)
     {
         $request->validate([
-            'CodeEquip' => 'required',
-            'TypeEquip' => 'required',
-            'MarEquip' => 'required',
-            'SerieEquip' => 'required',
-            'InfoEquip' => 'required'
+            'Code' => 'required',
+            'Date' => 'required',
+            'TypeMach' => 'required',
+            'SrvEmet' => 'required',
+            'SrvRec' => 'required',
+            'Commentaire' => 'required'
         ]);
         $changmat->fill($request->post())->save();
         return redirect()->route('changmat.index');

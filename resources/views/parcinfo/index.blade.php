@@ -6,6 +6,12 @@
         <a href="{{ route('parcinfo.create') }}">
             <button type="button" class="btn btn-primary">Ajouter</button>
         </a>
+        <a href="{{ route('autresequip.index') }}">
+            <button type="button" class="btn btn-warning">Autres équipement</button>
+        </a>
+        <a href="javascript:window.print()">
+            <button type="button" class="btn btn-secondary">Imprimer</button>
+        </a>
     </div>
     <table class="table text-center">
         <thead>

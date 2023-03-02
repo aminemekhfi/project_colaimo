@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ParcInfoController;
 use App\Http\Controllers\ChangMatController;
+use App\Http\Controllers\AutresequipController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +36,8 @@ require __DIR__.'/auth.php';
 
 Route::resource('parcinfo', ParcInfoController::class);
 Route::resource('changmat', ChangMatController::class);
+Route::resource('autresequip', AutresequipController::class);
+Route::resource('message', MessageController::class);
 
 Auth::routes();
 
