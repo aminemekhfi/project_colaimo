@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\message;
-use App\Http\Request;
+use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -25,7 +25,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('message.create');
     }
 
     /**
@@ -34,9 +34,22 @@ class MessageController extends Controller
      * @param  \App\Http\Requests\StoremessageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoremessageRequest $request)
+    public function store(Request $request)
     {
-        //
+        if ($request->isMethod('post')){
+            $request->validate([
+                'Utilisateur' => 'required',
+                'Contenu' => 'required',
+            ]);
+        }
+
+        $request->validate([
+            'Utilisateur' => 'required',
+            'Contenu' => 'required',
+        ]);
+
+            message::create($request->post());
+            return redirect()->route('message.index');
     }
 
     /**

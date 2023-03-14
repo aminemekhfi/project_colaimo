@@ -9,6 +9,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
@@ -122,13 +123,7 @@
     .active{
         color: var(--white-color)
     }
-    .active::before{
-        content: '';
-        position: absolute;
-        left: 0;width: 2px;
-        height: 32px;
-        background-color: var(--white-color)
-    }
+
     .height-100{
         height:100vh
     }
@@ -177,43 +172,64 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="#" class="nav_logo">
+                <a href="{{ route('dashboard') }}" class="nav_logo">
                     <img src="colaimo.png" alt="" width="25">
                     <span class="nav_logo-name">COLAIMO</span>
                 </a>
                 <div class="nav_list">
-                    <a href="" class="nav_link active">
+                    <a href="{{ route('dashboard') }}" class="nav_link active">
                         <i class='bx bx-grid-alt nav_icon'></i> 
                         <span class="nav_name">Accueil</span> 
                     </a> 
-                    <a href="#" class="nav_link"> 
+
+                    @can('viewany', App\Models\User::class)
+                    <a href="{{ route('User.index')}}" class="nav_link"> 
                         <i class='bx bx-user nav_icon'></i> 
                         <span class="nav_name">Utilisateur</span> 
                     </a> 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-message-square-detail nav_icon'></i> 
-                        <span class="nav_name">Message</span> 
+                    @endcan
+
+                    <a href="{{ route('message.index') }}" class="nav_link"> 
+                        <i class='bx bx-message-square-detail '></i> 
+                        <span class="nav_name">Messagerie</span> 
                     </a> 
+
+                    
+                    @can('viewany',App\Models\parcinfo::class)
                     <a href="{{ route('parcinfo.index') }}" class="nav_link"> 
                         <i class='bx bx-desktop nav_icon'></i> 
                         <span class="nav_name">Parc informatique</span> 
                     </a> 
-                    <a href="#" class="nav_link"> 
+                    @endcan
+
+                    @can('viewany', App\Models\Stagiaire::class)
+                    <a href="{{ route('Stagiaire.index') }}" class="nav_link"> 
                         <i class='bx bxs-graduation nav_icon'></i>
                         <span class="nav_name">Stagiaire</span> 
                     </a> 
-                    <a href="#" class="nav_link"> 
+                    @endcan
+
+                    @can('viewany', App\Models\TachEffectuee::class)
+                    <a href="{{ route('TachEffectuee.index')}}" class="nav_link"> 
                         <i class='bx bx-check-shield nav_icon'></i>
                         <span class="nav_name">Tâches effectuées</span> 
                     </a> 
+                    @endcan
+
+                    @can('viewany', App\Models\ChangMat::class)
                     <a href="{{ route('changmat.index') }}" class="nav_link"> 
                         <i class='bx bx-transfer-alt nav_icon'></i>
                         <span class="nav_name">Changement de<br> matériel</span> 
                     </a> 
-                    
+                    @endcan
+                                        
                 </div>
             </div> 
             <a href="#" class="nav_link"> 
+                    <a href="" class="nav_link"> 
+                        <i class='bx bxs-user-circle nav_icon'></i>
+                        <span class="nav_name">{{ Auth::user()->name }}</span> 
+                    </a> 
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
@@ -242,7 +258,7 @@
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
+    <div class="height-100 ">
         <main class="py-4">
             @yield('content')
         </main>

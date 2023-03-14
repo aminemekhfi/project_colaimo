@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
-    <h2>Salut! {{ Auth::user()->name }}</h2><br>
+    <h2>Autres équipements</h2><br>
     <div class="container-md">
         <form action="{{ route('autresequip.update', $autresequip->id) }}" method="POST">
             @csrf 

@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class message extends Model
+class TachEffectuee extends Model
 {
     use HasFactory;
-    use HasFactory;
-    protected $fillable = ['Utilisateur' , 'Contenu', 'Date'];
-
+    protected $fillable = ['CodeTache','DateTache','Depar','Service','TacheEffec','Commantaire'];
 }

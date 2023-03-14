@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->string('Utilisateur');
-            $table->string('Contenu');
-            $table->timestamps();
-        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('type')->nullable();
+            });
     }
 
     /**
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('type');
+            });
     }
 };

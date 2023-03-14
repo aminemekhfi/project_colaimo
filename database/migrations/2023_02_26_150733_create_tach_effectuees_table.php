@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('tach_effectuees', function (Blueprint $table) {
             $table->id();
-            $table->string('Utilisateur');
-            $table->string('Contenu');
+            $table->integer('CodeTache');
+            $table->date('DateTache');
+            $table->string('Depar');
+            $table->string('Service');
+            $table->string('TacheEffec');
+            $table->string('Commantaire');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('tach_effectuees');
     }
 };

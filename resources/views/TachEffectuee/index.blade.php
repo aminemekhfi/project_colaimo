@@ -1,48 +1,48 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
-    <h2>Parc Informatique</h2><br>
+    <h2>Tache effectuée</h2><br>
     <div class="d-flex justify-content-between">
-        <a href="{{ route('parcinfo.create') }}">
+        <a href="{{ route('TachEffectuee.create') }}">
             <button type="button" class="btn btn-primary">Ajouter</button>
-        </a>
-        <a href="{{ route('autresequip.index') }}">
-            <button type="button" class="btn btn-warning">Autres équipement</button>
-        </a>
-        <a href="javascript:window.print()">
-            <button type="button" class="btn btn-secondary">Imprimer</button>
         </a>
     </div>
     <table class="table text-center">
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Département</th>
+                <th scope="col">CodeTache</th>
+                <th scope="col">DateTache</th>
+                <th scope="col">Depar</th>
                 <th scope="col">Service</th>
-                <th scope="col">Marque Ordi</th>
+                <th scope="col">TacheEffec</th>
+                <th scope="col">Commantaire</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($parcinfo as $p)
+            @foreach ($TachEffectuee as $TaEf)
             <tr> 
-                    <td>{{ $p->id }}</td>
-                    <td>{{ $p->Departement }}</td>
-                    <td>{{ $p->Service }}</td>
-                    <td>{{ $p->Mord }}</td>
+                    <td>{{ $TaEf->id }}</td>
+                    <td>{{ $TaEf->CodeTache }}</td>
+                    <td>{{ $TaEf->DateTache }}</td>
+                    <td>{{ $TaEf->Depar }}</td>
+                    <td>{{ $TaEf->Service }}</td>
+                    <td>{{ $TaEf->TacheEffec }}</td>
+                    <td>{{ $TaEf->Commantaire }}</td>
                     <td>
                         <div class="d-flex justify-content-evenly">
-                            <a href="{{ route('parcinfo.show', $p->id) }}">
+                            <a href="{{ route('TachEffectuee.show', $TaEf->id) }}">
                             <button type="button" class="btn btn-secondary">
                                 <i class='bx bx-show nav_icon'></i>
                             </button>
                             </a>
-                            <a href="{{ route('parcinfo.edit', $p->id) }}">
+                            <a href="{{ route('TachEffectuee.edit', $TaEf->id) }}">
                                 <button type="button" class="btn btn-warning">
                                     <i class='bx bx-edit nav_icon'></i>
                                 </button>
                             </a>
-                            <form action="{{ route('parcinfo.destroy', $p->id) }}" method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer ce ma?')">
+                            <form action="{{ route('TachEffectuee.destroy', $TaEf->id) }}" method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer ce tache?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">

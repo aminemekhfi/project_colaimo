@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
-    <h2>Salut! {{ Auth::user()->name }}</h2><br>
+    <h2>Changement matériels</h2><br>
     <div class="d-flex justify-content-between">
         <a href="{{ route('changmat.create') }}">
             <button type="button" class="btn btn-primary">Ajouter</button>

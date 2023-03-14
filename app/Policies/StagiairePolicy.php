@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\ChangMat;
+use App\Models\Stagiaire;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ChangMatPolicy
+class StagiairePolicy
 {
     use HandlesAuthorization;
 
@@ -18,7 +18,7 @@ class ChangMatPolicy
      */
     public function viewAny(User $user)
     {
-        if(in_array($user->type, ['admin'])){
+        if(in_array($user->type, ['admin','service stagiaire'])){
             return true;
         }
         else {
@@ -30,17 +30,17 @@ class ChangMatPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\Stagiaire  $stagiaire
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, ChangMat $changMat)
+    public function view(User $user, Stagiaire $stagiaire)
     {
-        if(in_array($user->type, ['admin'])){
+        if(in_array($user->type, ['admin','service stagiaire'])){
             return true;
         }
-       
+        else {
             return false;
-        
+        }
     }
 
     /**
@@ -51,24 +51,24 @@ class ChangMatPolicy
      */
     public function create(User $user)
     {
-        if(in_array($user->type, ['admin'])){
+        if(in_array($user->type, ['admin','service stagiaire'])){
             return true;
         }
-        
+        else if (in_array($user->type, ['employers'])){
             return false;
-        
+        }
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\Stagiaire  $stagiaire
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, ChangMat $changMat)
+    public function update(User $user, Stagiaire $stagiaire)
     {
-        if(in_array($user->type, ['admin'])){
+        if(in_array($user->type, ['admin','service stagiaire'])){
             return true;
         }
         else if (in_array($user->type, ['employers'])){
@@ -80,15 +80,15 @@ class ChangMatPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\Stagiaire  $stagiaire
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, ChangMat $changMat)
+    public function delete(User $user, Stagiaire $stagiaire)
     {
-        if(in_array($user->type, ['admin'])){
+        if(in_array($user->type, ['admin','service stagiaire'])){
             return true;
         }
-        else if(in_array($user->type, ['employers'])){
+        else {
             return false;
         }
     }
@@ -97,10 +97,10 @@ class ChangMatPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\Stagiaire  $stagiaire
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, ChangMat $changMat)
+    public function restore(User $user, Stagiaire $stagiaire)
     {
         //
     }
@@ -109,10 +109,10 @@ class ChangMatPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\Stagiaire  $stagiaire
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, ChangMat $changMat)
+    public function forceDelete(User $user, Stagiaire $stagiaire)
     {
         //
     }

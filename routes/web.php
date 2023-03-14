@@ -5,6 +5,10 @@ use App\Http\Controllers\ParcInfoController;
 use App\Http\Controllers\ChangMatController;
 use App\Http\Controllers\AutresequipController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\TachEffectueeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\StagiaireController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +26,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,6 +40,9 @@ Route::resource('parcinfo', ParcInfoController::class);
 Route::resource('changmat', ChangMatController::class);
 Route::resource('autresequip', AutresequipController::class);
 Route::resource('message', MessageController::class);
+Route::resource('TachEffectuee', TachEffectueeController::class);
+Route::resource('User', UserController::class);
+Route::resource('Stagiaire', StagiaireController::class);
 
 Auth::routes();
 

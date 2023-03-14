@@ -2,13 +2,15 @@
 
 namespace App\Policies;
 
-use App\Models\ChangMat;
+use App\Models\TachEffectuee;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ChangMatPolicy
+class TachEffectueePolicy
 {
     use HandlesAuthorization;
+
+    
 
     /**
      * Determine whether the user can view any models.
@@ -30,10 +32,10 @@ class ChangMatPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\TachEffectuee  $tachEffectuee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, ChangMat $changMat)
+    public function view(User $user, TachEffectuee $tachEffectuee)
     {
         if(in_array($user->type, ['admin'])){
             return true;
@@ -63,10 +65,10 @@ class ChangMatPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\TachEffectuee  $tachEffectuee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, ChangMat $changMat)
+    public function update(User $user, TachEffectuee $tachEffectuee)
     {
         if(in_array($user->type, ['admin'])){
             return true;
@@ -80,10 +82,10 @@ class ChangMatPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\TachEffectuee  $tachEffectuee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, ChangMat $changMat)
+    public function delete(User $user, TachEffectuee $tachEffectuee)
     {
         if(in_array($user->type, ['admin'])){
             return true;
@@ -97,10 +99,10 @@ class ChangMatPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\TachEffectuee  $tachEffectuee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, ChangMat $changMat)
+    public function restore(User $user, TachEffectuee $tachEffectuee)
     {
         //
     }
@@ -109,10 +111,10 @@ class ChangMatPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ChangMat  $changMat
+     * @param  \App\Models\TachEffectuee  $tachEffectuee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, ChangMat $changMat)
+    public function forceDelete(User $user, TachEffectuee $tachEffectuee)
     {
         //
     }

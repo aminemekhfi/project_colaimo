@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\ParcInfo;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -18,19 +18,29 @@ class ParcInfoPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if(in_array($user->type, ['admin'])){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ParcInfo  $parcInfo
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, ParcInfo $parcInfo)
+    public function view(User $user, Post $post)
     {
-        //
+        if(in_array($user->type, ['admin'])){
+            return true;
+        }
+       
+            return false;
+        
     }
 
     /**
@@ -40,42 +50,57 @@ class ParcInfoPolicy
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
-    {
-        //
+    {        
+        if(in_array($user->type, ['admin'])){
+            return true;
+        }
+        
+            return false;
+        
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ParcInfo  $parcInfo
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, ParcInfo $parcInfo)
+    public function update(User $user, Post $post)
     {
-        //
+        if(in_array($user->type, ['admin'])){
+            return true;
+        }
+        else if (in_array($user->type, ['employers'])){
+            return false;
+        }
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ParcInfo  $parcInfo
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, ParcInfo $parcInfo)
+    public function delete(User $user, Post $post)
     {
-        //
+        if(in_array($user->type, ['admin'])){
+            return true;
+        }
+        else if(in_array($user->type, ['employers'])){
+            return false;
+        }
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ParcInfo  $parcInfo
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, ParcInfo $parcInfo)
+    public function restore(User $user, Post $post)
     {
         //
     }
@@ -84,10 +109,10 @@ class ParcInfoPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ParcInfo  $parcInfo
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, ParcInfo $parcInfo)
+    public function forceDelete(User $user, Post $post)
     {
         //
     }

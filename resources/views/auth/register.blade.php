@@ -64,6 +64,15 @@
 										Ajouter	
 									</button>
 								</div>
+								<div class="mb-3">
+                                    <label for="type" class="col-md-4 col-form-label mb-2 text-muted">{{ __('Type') }}</label>
+									<input type="text" class="form-control  @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="password" autofocus>
+                                    @error('type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+								</div>
 							</form>
 						</div>
 					</div>
