@@ -214,7 +214,6 @@
 <body>
 
 	<div class="bg-img1 size1 flex-w flex-c-m p-t-55 p-b-55 p-l-15 p-r-15" style="background-image: url('images/bg01.jpg');">
-
         <div class="wsize1 bor1 txt-center bg1 p-t-70 p-b-100 p-l-15 p-r-15 respon1 ">
 			<div class="wsize2 flex-w flex-c p-b-68 hsize1 cd70">
 				<img src="colaimo.png" alt="LOGO" width="280px">
@@ -222,8 +221,7 @@
 			<p class="txt-center m1-txt1 p-t-33 p-b-68">
 				La coopérative laitière du Maroc oriental
 			</p>
-            <div class="wsize2 flex-w flex-c hsize1 cd20">
-                
+            <div class="wsize2 flex-w flex-c hsize1 cd20"> 
 				<div class="col-md-9 col-sm-9 mx-auto text-center mb-5">
 					<a href="{{ route('login') }}">
                   		<button type="button" class="btn btn-success btn-lg btn-radius">
@@ -235,19 +233,19 @@
                 			    @endif
                 			    @else
                 			        <li class="nav-item dropdown">
-                			            <a class="nav_link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                			            <a class="nav_link" href="{{ route('dashboard') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 			                <i class="bx bx-log-out nav_icon"></i>
-                			                <span class="nav_name">Déconnexion</span> 
+                			                <span class="nav_name">dashboard</span> 
                 			            </a>
                 			            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                			                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                			                <form id="logout-form" action="{{ route('dashboard') }}" method="GET" class="d-none">
                 			                    @csrf
                 			                </form>
                 			            </div>
                 			        </li>
                 			@endguest
 						</button>
-				  	</a>	
+				  	</a>
                </div>
             </div>
 

@@ -51,7 +51,6 @@
         z-index: var(--z-fixed);transition: .5s
     }
     .header_toggle{
-        color: var(--first-color);
         font-size: 1.5rem;
         cursor: pointer
     }
@@ -166,95 +165,61 @@
 <body id="body-pd">
 <header class="header" id="header">
         <div class="header_toggle"> 
-            <i class='bx bx-menu' id="header-toggle"></i>            
+            <i class='bx bx-menu' id="header-toggle"></i>  
         </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="{{ route('dashboard') }}" class="nav_logo">
+                <a href="/" class="nav_logo">
                     <img src="colaimo.png" alt="" width="25">
                     <span class="nav_logo-name">COLAIMO</span>
                 </a>
                 <div class="nav_list">
-                    <a href="{{ route('dashboard') }}" class="nav_link active">
-                        <i class='bx bx-grid-alt nav_icon'></i> 
-                        <span class="nav_name">Accueil</span> 
-                    </a> 
-
+                    <a href="{{ route('change-password') }}" class="nav_link active">
+                        <i class='bx bx-user-circle nav_icon'></i>
+                        <span class="nav_name">Profile</span> 
+                    </a>
+                <a href="{{ route('dashboard') }}" class="nav_link active">
+                    <i class='bx bx-grid-alt nav_icon'></i> 
+                    <span class="nav_name">Accueil</span> 
+                </a>
                     @can('viewany', App\Models\User::class)
-                    <a href="{{ route('User.index')}}" class="nav_link"> 
+                    <a href="{{ route('User.index') }}" class="nav_link"> 
                         <i class='bx bx-user nav_icon'></i> 
                         <span class="nav_name">Utilisateur</span> 
                     </a> 
                     @endcan
-
                     <a href="{{ route('message.index') }}" class="nav_link"> 
                         <i class='bx bx-message-square-detail '></i> 
                         <span class="nav_name">Messagerie</span> 
                     </a> 
-
-                    
                     @can('viewany',App\Models\parcinfo::class)
                     <a href="{{ route('parcinfo.index') }}" class="nav_link"> 
                         <i class='bx bx-desktop nav_icon'></i> 
                         <span class="nav_name">Parc informatique</span> 
                     </a> 
                     @endcan
-
                     @can('viewany', App\Models\Stagiaire::class)
                     <a href="{{ route('Stagiaire.index') }}" class="nav_link"> 
                         <i class='bx bxs-graduation nav_icon'></i>
                         <span class="nav_name">Stagiaire</span> 
                     </a> 
                     @endcan
-
                     @can('viewany', App\Models\TachEffectuee::class)
                     <a href="{{ route('TachEffectuee.index')}}" class="nav_link"> 
                         <i class='bx bx-check-shield nav_icon'></i>
                         <span class="nav_name">Tâches effectuées</span> 
                     </a> 
                     @endcan
-
                     @can('viewany', App\Models\ChangMat::class)
                     <a href="{{ route('changmat.index') }}" class="nav_link"> 
                         <i class='bx bx-transfer-alt nav_icon'></i>
                         <span class="nav_name">Changement de<br> matériel</span> 
                     </a> 
-                    @endcan
-                                        
+                    @endcan                
                 </div>
             </div> 
-            <a href="#" class="nav_link"> 
-                    <a href="" class="nav_link"> 
-                        <i class='bx bxs-user-circle nav_icon'></i>
-                        <span class="nav_name">{{ Auth::user()->name }}</span> 
-                    </a> 
-                @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="bx bx-log-out nav_icon" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a class="nav_link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="bx bx-log-out nav_icon"></i>
-                                <span class="nav_name">Déconnexion</span> 
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                @endguest
-            </a>
         </nav>
     </div>
     <!--Container Main start-->

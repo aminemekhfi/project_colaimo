@@ -9,7 +9,7 @@
         <a href="{{ route('autresequip.index') }}">
             <button type="button" class="btn btn-warning">Autres équipement</button>
         </a>
-        <a href="javascript:window.print()">
+        <a href="">
             <button type="button" class="btn btn-secondary">Imprimer</button>
         </a>
     </div>
