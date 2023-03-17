@@ -16,7 +16,6 @@
                 <th scope="col">Etablissement</th>
                 <th scope="col">Branche</th>
                 <th scope="col">Niveau</th>
-                <th scope="col">Type stage</th>
                 <th scope="col">Date debut</th>
                 <th scope="col">Date fin</th>
                 <th>Actions</th>
@@ -31,7 +30,6 @@
                     <td>{{ $sta->Etab }}</td>
                     <td>{{ $sta->Branch }}</td>
                     <td>{{ $sta->Niveau }}</td>
-                    <td>{{ $sta->TyStage }}</td>
                     <td>{{ $sta->Ddebut }}</td>
                     <td>{{ $sta->Dfin }}</td>
                     <td>

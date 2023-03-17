@@ -25,7 +25,7 @@
     --nav-width: 68px;
     --first-color: #242526;
     --first-color-light: #ffffff;
-    --white-color: #F7F6FB;
+    --white-color: #ffffff;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
     --z-fixed: 100}*,::before,::after{box-sizing: border-box}
@@ -166,8 +166,9 @@
 <header class="header" id="header">
         <div class="header_toggle"> 
             <i class='bx bx-menu' id="header-toggle"></i>  
+            
         </div>
-    </header>
+</header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
@@ -176,14 +177,10 @@
                     <span class="nav_logo-name">COLAIMO</span>
                 </a>
                 <div class="nav_list">
-                    <a href="{{ route('change-password') }}" class="nav_link active">
-                        <i class='bx bx-user-circle nav_icon'></i>
-                        <span class="nav_name">Profile</span> 
+                    <a href="{{ route('dashboard') }}" class="nav_link active">
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Accueil</span> 
                     </a>
-                <a href="{{ route('dashboard') }}" class="nav_link active">
-                    <i class='bx bx-grid-alt nav_icon'></i> 
-                    <span class="nav_name">Accueil</span> 
-                </a>
                     @can('viewany', App\Models\User::class)
                     <a href="{{ route('User.index') }}" class="nav_link"> 
                         <i class='bx bx-user nav_icon'></i> 
@@ -217,7 +214,11 @@
                         <i class='bx bx-transfer-alt nav_icon'></i>
                         <span class="nav_name">Changement de<br> matériel</span> 
                     </a> 
-                    @endcan                
+                    @endcan     
+                    <a href="{{ route('change-password') }}" class="nav_link active">
+                        <i class='bx bx-user-circle nav_icon'></i>
+                        <span class="nav_name">{{ Auth::user()->name }}</span> 
+                    </a>             
                 </div>
             </div> 
         </nav>

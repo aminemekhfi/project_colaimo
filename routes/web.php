@@ -16,6 +16,8 @@ use App\Http\Controllers\ImprimeTachEffectueeController;
 use App\Http\Controllers\ImprimeChangementmatController;
 use App\Http\Controllers\ImprimeAutresequipController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,8 @@ Route::resource('message', MessageController::class);
 Route::resource('TachEffectuee', TachEffectueeController::class);
 Route::resource('User', UserController::class);
 Route::resource('Stagiaire', StagiaireController::class);
+Route::resource('departement', DepartementController::class);
+Route::resource('service', ServiceController::class);
 
 Route::resource('imprimerparc',ImprimeParcInfoController::class);
 Route::resource('imprimerstag',ImprimeStagiaireController::class);

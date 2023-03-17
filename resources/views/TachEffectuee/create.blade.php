@@ -25,7 +25,8 @@
                 @enderror
             </div>
             <div>
-                <label>Departement</label>
+                <label>Département</label>
+                <div class="d-flex align-items-baseline">
                 <select name="Depar" id="Depar" class="form-select mb-1 @error('Depar') is-invalid @enderror">
                     
                     <option value="Administratif et Financier">
@@ -50,7 +51,7 @@
                         Qualite
                     </option>
                     <option value="Developpement et Recherche">
-                        Developpement et Recherche
+                        Développement et Recherche
                     </option>
                     <option value="Informatique">
                         Informatique
@@ -59,7 +60,12 @@
                     <div class="alert alert-danger text-danger">{{ $message }}</div>
                     @enderror
                 </select>
-               
+                <a href="{{ route('departement.create') }}">
+                    <button id="ajouter-departement" type="submit" class="btn btn-primary">
+                        <i class='bx bxs-comment-add nav_icon'></i>
+                    </button>
+                </a>
+                </div> 
         </div>
         <label>Service</label>
         <div class="d-flex align-items-baseline">
